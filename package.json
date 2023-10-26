@@ -1,0 +1,19 @@
+{
+  "name": "todolist-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "live-server src",
+    "watch:sass": "node-sass src/assets/scss/styles.scss src/assets/css/styles.css --watch",
+    "start": "concurrently \"npm run watch:sass\" \"npm run serve\""
+  },
+  "author": "Mariana Arevalo",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "live-server": "^1.2.2",
+    "node-sass": "^9.0.0"
+  }
+}
