@@ -36,9 +36,13 @@ const taskList = [task1,task2];
 // views
 
 function displayTasks(tasks) {
+
+    clearList();
+
     const list = document.getElementById('to-do-list');
 
     tasks.forEach(task => {
+
         const card = document.createElement('div');
         card.className = 'list-element';
         card.innerHTML = `
@@ -62,6 +66,11 @@ function displayTasks(tasks) {
     initDeleteTaskButtonHandler();
     initUpdateTaskButtonHandler();
 
+}
+
+function clearList(){
+    const listBody = document.getElementById('to-do-list');
+    listBody.innerHTML = '';
 }
 
 // boton para agregar 
