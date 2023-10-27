@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="./assets/css/styles.css">
     
+    <script src="https://kit.fontawesome.com/4674f1267d.js" crossorigin="anonymous"></script>
     <title>TO-DO LIST</title>
 </head>
 <body>
@@ -24,7 +25,7 @@
     </div>
 
     <div id="to-do-list" class="to-do-list">
-
+        <!-- agregar las tareas --> 
     </div>
 </div>
 
@@ -34,8 +35,8 @@
 
     <h2 id="modal-title">Nueva Tarea</h2>
 
-    <form id="task-form" class="form-section">
-
+    <form id="add-task-form" class="form-section">
+    
       <label for="task-title-field">Title:</label>
       <input type="text" id="task-title-field" class="form-field" required>
 
@@ -44,9 +45,8 @@
 
       <label for="completed-field">Completed:</label>
       <select id="completed-field" class="form-field" required>
-        <option value="completada">Completada</option>
-        <option value="no-completada">No Completada</option>
-        <option value="en-progreso">En Progreso</option>
+        <option value="false">No Completada</option>
+        <option value="true">Completada</option>
       </select>
 
       <label for="priority-field">Priority:</label>
@@ -86,9 +86,8 @@
 
       <label for="update-completed-field">Completed:</label>
       <select id="update-completed-field" class="form-field" required>
-        <option value="">Completada</option>
-        <option value="">No Completada</option>
-        <option value="">En Progreso</option>
+        <option value="false">No Completada</option>
+        <option value="true">Completada</option>
       </select>
 
       <label for="update-priority-field">Priority:</label>
@@ -100,8 +99,10 @@
 
       <label for="update-tag-field">Tag:</label>
       <select id="update-tag-field" class="form-field" required>
-        <option value="escuela">Escuela</option>
-        <option value="salud">Salud</option>
+        <option value="DFE">DFE</option>
+        <option value="API2">API2</option>
+        <option value="PDS3">PDS3</option>
+        <option value="ISW3">ISW3</option>
       </select>
 
       <label for="update-due-date-field">Due date:</label>

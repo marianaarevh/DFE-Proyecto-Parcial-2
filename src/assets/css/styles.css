@@ -73,9 +73,6 @@ button {
 
 }
 
-.to-do-list{
-
-}
 
 .list-element {
     display: flex;
@@ -93,6 +90,37 @@ button {
     text-align: left;
     padding-left: 15px;
     margin-left: 10px ;
+}
+
+.tag-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 15px;
+}
+
+
+.tag {
+    background-color: var(--accent-color);
+    border-radius: 10px;
+    font-size: 0.8rem;
+    width: 100%;
+}
+
+.btn-container{
+    padding: 20px;
+    background-color: transparent;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left:5px;
+}
+
+.btn-update, 
+.btn-delete{
+    padding: 3px;
+    font-size: 1.4rem;
+    color: var(--main-color);
+    background-color: transparent;
 }
 
 /* #region Modal */
@@ -118,6 +146,10 @@ button {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
+  #modal-create, #modal-update{
+    display: none;
+  }
+
   /* formularios */
   .form-section {
     display: flex;
@@ -128,7 +160,7 @@ button {
     flex-wrap: wrap;
     gap: 1rem;
   }
-  
+ 
   .form-field {
     display: flex;
     flex-direction: column;
