@@ -73,19 +73,26 @@ button {
 
 }
 
-ul li{
-    list-style: none;
-    font-size: 1rem;
-    padding: 15px;
+.to-do-list{
+
 }
 
-li {
+.list-element {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: white;
-    margin: 8px 0px;
+    margin: 15px 0px;
+    padding: 20px;
     border-radius: 40px;
+}
+
+.list-element p, h3 {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    padding-left: 15px;
+    margin-left: 10px ;
 }
 
 /* #region Modal */

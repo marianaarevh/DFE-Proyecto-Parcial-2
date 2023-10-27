@@ -23,11 +23,9 @@
         <button alt="Añadir" id="add-task">+</button>
     </div>
 
-    <ul class="to-do-list">
-        <li> hola </li>
-        <li> lunes </li>
-        <li> comer saludable</li>
-    </ul>
+    <div id="to-do-list" class="to-do-list">
+
+    </div>
 </div>
 
 <div id="modal-background" class="modal-background"></div>
@@ -46,9 +44,9 @@
 
       <label for="completed-field">Completed:</label>
       <select id="completed-field" class="form-field" required>
-        <option value="">Completada</option>
-        <option value="">No Completada</option>
-        <option value="">En Progreso</option>
+        <option value="completada">Completada</option>
+        <option value="no-completada">No Completada</option>
+        <option value="en-progreso">En Progreso</option>
       </select>
 
       <label for="priority-field">Priority:</label>
@@ -114,5 +112,10 @@
     </form>
 
   </div>
+
+  <script src="./shared/fetch-api.js"></script>
+  <script src="./shared/utils.js"></script>
+  <script src="./script.js"></script>
+
 </body>
 </html>
