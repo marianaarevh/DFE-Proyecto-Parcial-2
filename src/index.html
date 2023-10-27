@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./assets/css/styles.css">
+    
     <title>TO-DO LIST</title>
 </head>
 <body>
@@ -14,7 +20,7 @@
 
     <div class="tasks-body">
         <input type="text" id="task-text" class="task-input" placeholder="Añade una tarea">
-        <img src="./assets/img/plus-pequeno.png" alt="Añadir" id="add-task">
+        <button alt="Añadir" id="add-task">+</button>
     </div>
 
     <ul class="to-do-list">
@@ -23,5 +29,90 @@
         <li> comer saludable</li>
     </ul>
 </div>
+
+<div id="modal-background" class="modal-background"></div>
+
+<div id="modal-create" class="modal">
+
+    <h2 id="modal-title">Nueva Tarea</h2>
+
+    <form id="task-form" class="form-section">
+
+      <label for="task-title-field">Title:</label>
+      <input type="text" id="task-title-field" class="form-field" required>
+
+      <label for="description-field">Description:</label>
+      <textarea id="description-field" class="form-field" required></textarea>
+
+      <label for="completed-field">Completed:</label>
+      <select id="completed-field" class="form-field" required>
+        <option value="">Completada</option>
+        <option value="">No Completada</option>
+        <option value="">En Progreso</option>
+      </select>
+
+      <label for="priority-field">Priority:</label>
+      <select id="priority-field" class="form-field" required>
+        <option value="alta">Alta</option>
+        <option value="media">Media</option>
+        <option value="baja">Baja</option>
+      </select>
+
+      <label for="tag-field">Tag:</label>
+      <select id="tag-field" class="form-field" required>
+        <option value="escuela">Escuela</option>
+        <option value="salud">Salud</option>
+      </select>
+
+      <label for="due-date-field">Due date:</label>
+      <input type="date" id="due-date-field" class="form-field" required>
+
+      <button type="submit" class="btn-submit" id="btn-submit">Guardar</button>
+
+    </form>
+
+  </div>
+
+  <div id="modal-update" class="modal">
+
+    <h2 id="modal-title">Modificar Tarea</h2>
+
+    <form id="update-task-form" class="form-section">
+      <input type="text" id="update-task-id" class="form-field" required style="display: none;">
+
+      <label for="update-task-title-field">Title:</label>
+      <input type="text" id="update-task-title-field" class="form-field" required>
+
+      <label for="update-description-field">Description:</label>
+      <textarea id="update-description-field" class="form-field" required></textarea>
+
+      <label for="update-completed-field">Completed:</label>
+      <select id="update-completed-field" class="form-field" required>
+        <option value="">Completada</option>
+        <option value="">No Completada</option>
+        <option value="">En Progreso</option>
+      </select>
+
+      <label for="update-priority-field">Priority:</label>
+      <select id="update-priority-field" class="form-field" required>
+        <option value="alta">Alta</option>
+        <option value="media">Media</option>
+        <option value="baja">Baja</option>
+      </select>
+
+      <label for="update-tag-field">Tag:</label>
+      <select id="update-tag-field" class="form-field" required>
+        <option value="escuela">Escuela</option>
+        <option value="salud">Salud</option>
+      </select>
+
+      <label for="update-due-date-field">Due date:</label>
+      <input type="date" id="update-due-date-field" class="form-field" required>
+
+      <button type="submit" class="btn-submit" >Guardar</button>
+
+    </form>
+
+  </div>
 </body>
 </html>
