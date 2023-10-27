@@ -26,6 +26,10 @@ button {
     padding: 1rem 1.5rem;
   }
 
+  button:hover{
+    transform: scale(1.03);
+  }
+
 
 .container {
     background-color: var(--base-color);
@@ -36,27 +40,19 @@ button {
     text-align: center;
 }
 
-.tasks-body{
-    background-color: white;
+#to-do-title{
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     padding-left: 20px;
-    margin-bottom: 20px;
-    border-radius: 30px;
+    margin: 0 18px;
 }
 
-
-.task-input{
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 15px 0px;
-    background-color: transparent;
-    
-    font-size: 1.1rem;
+#to-do-title h1{
+    font-size: 3rem;
 }
+
 
 #add-task {
     background-color: var(--main-color);
