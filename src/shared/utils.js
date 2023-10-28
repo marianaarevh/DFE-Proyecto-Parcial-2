@@ -12,5 +12,5 @@ function formatDate(date) {
     const formattedDay = String(day).padStart(2, '0');
     const formattedMonth = String(month).padStart(2, '0');
   
-    return `${formattedDay}/${formattedMonth}/${year}`;
+    return `${year}-${formattedMonth}-${formattedDay}`;
   }

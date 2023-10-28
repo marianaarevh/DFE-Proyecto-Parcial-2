@@ -22,9 +22,21 @@ function mapAPIToTasks(data) {
             item.completed,
             item.priority,
             item.tag,
-            new Date(item.dueDate)
+            (new Date(item.dueDate))
         );
     });  
+}
+
+function oneTask(data) {
+    return new Task(
+      data.id,
+      data.title,
+      data.description,
+      data.completed,
+      data.priority,
+      data.tag,
+      (new Date(data.dueDate)),
+    );
 }
 
 /*
@@ -47,10 +59,11 @@ function displayTasks(tasks) {
         card.className = 'list-element';
         card.innerHTML = `
                     <div class="task-information">
-                        <h3>${task.title} - ${formatDate(task.dueDate)}</h3>
+                        <h3>${task.title}&nbsp;&nbsp;&nbsp; -> &nbsp;&nbsp;&nbsp;${formatDate(task.dueDate)}</h3>
                         <div class="tag-container">
-                        <p class="tag">Terminado: ${task.completed}</p>
+                        <p class="tag">Prioridad ${task.priority}</p>
                         <p class="tag">${task.tag}</p>
+                        <p class="tag">Completada = ${task.completed}</p>
                         </div>
                         <p>${task.description}</p>
 
@@ -72,7 +85,7 @@ function clearList(){
     const listBody = document.getElementById('to-do-list');
     listBody.innerHTML = '';
 }
-
+// #region AddTask
 // boton para agregar 
 function initAddTaskButtonsHandler() {
 
@@ -111,9 +124,12 @@ function initAddTaskButtonsHandler() {
     const completed = document.getElementById('completed-field').value;
     const priority = document.getElementById('priority-field').value;
     const tag = document.getElementById('tag-field').value;
-    const dueDate = document.getElementById('due-date-field').value;
 
-  
+    const dueDateInput = document.getElementById('due-date-field').value;
+    const dueDate = formatDate(new Date(dueDateInput));
+
+    console.log(dueDate);
+
     const taskToSave = new Task(
       null,
       title,
@@ -127,6 +143,9 @@ function initAddTaskButtonsHandler() {
     createTask(taskToSave);
   }
   
+  //#endregion
+
+// #region UpdateTask
   // boton para editar
   function initUpdateTaskButtonHandler() {
     document.querySelectorAll('.btn-update').forEach(button => {
@@ -134,7 +153,11 @@ function initAddTaskButtonsHandler() {
         button.addEventListener('click', () => {
 
         const taskId = button.getAttribute('data-task-id');
-        openUpdateTaskModal(taskId);
+        
+        openUpdateTaskModal();
+        getTaskById(taskId);
+        console.log(taskId);
+        
 
       });
     });
@@ -162,29 +185,39 @@ function initAddTaskButtonsHandler() {
     document.getElementById('modal-update').style.display = 'none';
   }
 
-  function processUpdateTask() {
-    const id = document.getElementById('update-task-id').value
+  function loadTaskIntoForm(task) {
+    document.getElementById('update-task-title-field').value = task.title;
+    document.getElementById('update-description-field').value = task.description;
+    document.getElementById('update-completed-field').value = task.completed;
+    document.getElementById('update-priority-field').value = task.priority;
+    document.getElementById('update-tag-field').value = task.tag;
+    document.getElementById('update-due-date-field').value = task.dueDate;
+}
+
+  function processUpdateTask(taskId) {
     const title = document.getElementById('update-task-title-field').value;
     const description = document.getElementById('update-description-field').value;
     const completed = document.getElementById('update-completed-field').value;
     const priority = document.getElementById('update-priority-field').value;
     const tag = document.getElementById('update-tag-field').value;
-    const dueDate = document.getElementById('update-due-date-field').value;
   
-    const taskToSave = new Task(
-      id,
-      title,
-      description,
-      completed,
-      priority,
-      tag,
-      dueDate
-    );
+    const dueDateInput = document.getElementById('update-due-date-field').value;
+    const dueDate = formatDate(new Date(dueDateInput));
+
+    const existingTask = getTaskById(taskId);
+        existingTask.title = title;
+        existingTask.description = description;
+        existingTask.completed = completed;
+        existingTask.priority = priority;
+        existingTask.tag = tag;
+        existingTask.dueDate = dueDate;
   
-      updateTask(taskToSave);
+        updateTask(existingTask);
   
     }
+// #endregion
 
+// #region btn delete Task
 // boton Borrar
 function initDeleteTaskButtonHandler() {
 
@@ -200,13 +233,26 @@ function initDeleteTaskButtonHandler() {
     });
   
   }
+// #endregion
 
 // #region API
+function getTaskById(taskId) {
+    fetchAPI(`${apiURL}/users/219222258/tasks/${taskId}`, 'GET')
+      .then(data => {
+        const task = oneTask(data);
+        loadTaskIntoForm(task);
+        console.log("get task data");
+        console.log(task);
+
+      });
+  }
+
 function getTasksData() {
     fetchAPI(`${apiURL}/users/219222258/tasks`, 'GET')
       .then(data => {
         const tasksList = mapAPIToTasks(data);
         displayTasks(tasksList);
+        
       });
   
   }
@@ -252,4 +298,3 @@ function getTasksData() {
 // controlador
 getTasksData()
 initAddTaskButtonsHandler();
-displayTasks(taskList);
